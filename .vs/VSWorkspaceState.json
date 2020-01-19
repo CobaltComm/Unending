@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Bosses",
+    "\\Bosses\\IceBoss",
+    "\\Buffs",
+    "\\Buffs\\Debuffs",
+    "\\Items",
+    "\\NPCs",
+    "\\NPCs\\GlobalNPCs",
+    "\\Projectiles",
+    "\\Projectiles\\GlobalProjectiles"
+  ],
+  "SelectedNode": "\\NPCs\\GlobalNPCs\\UnendingGlobalNPC.cs",
+  "PreviewInSolutionExplorer": false
+}
