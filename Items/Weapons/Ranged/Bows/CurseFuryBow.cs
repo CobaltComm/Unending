@@ -12,7 +12,7 @@ namespace Unending.Items.Weapons.Ranged.Bows
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Vileblaze Longbow");
-			Tooltip.SetDefault("Infused with an accursed fury");
+			Tooltip.SetDefault("Infused with an accursed fury\nTurns Cursed Arrows into disgustingly-fast Cursed Firebolts");
 		}
 
 		public override void SetDefaults()

@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 
 namespace AAMod.Projectiles
 {
-    public class DarkArrow : ModProjectile
+    public class CursedFirebolt : ModProjectile
     {
         public override string Texture => "Terraria/Projectile_103";
         public override void SetStaticDefaults()
@@ -15,13 +15,14 @@ namespace AAMod.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.HellfireArrow);
-            aiType = ProjectileID.HellfireArrow;
+            projectile.CloneDefaults(ProjectileID.CursedArrow);
+            aiType = ProjectileID.CursedArrow;
+            projectile.extraUpdates = 2;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.Poisoned, 300);
+            target.AddBuff(BuffID.CursedInferno, 300);
         }
 
         public override void Kill(int timeleft)
