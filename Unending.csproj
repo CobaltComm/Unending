@@ -9,6 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Buffs\ArmorBuffs\" />
+    <Folder Include="Items\Ammo\Bullets\Pouches\" />
   </ItemGroup>
   <Target Name="BuildMod" AfterTargets="Build">
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />

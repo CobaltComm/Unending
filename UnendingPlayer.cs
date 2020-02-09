@@ -11,6 +11,8 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using static Terraria.ModLoader.ModContent;
+using Unending.Projectiles;
+using Unending.Projectiles.Friendly.Armor;
 
 namespace Unending
 {
@@ -40,6 +42,13 @@ namespace Unending
         public int SantankTimer;
         public bool PineSet;
         public bool VentureSet;
+        #region Sanguine Hate
+        public bool IchorArmorMelee;
+        public bool IchorArmorRanged;
+        public bool IchorArmorMagic;
+        public bool IchorArmorSummon;
+        public bool IchorSummonSet;
+        #endregion
         #endregion
 
         #region Accessory variables
@@ -75,6 +84,13 @@ namespace Unending
             }
             PineSet = false;
             VentureSet = false;
+            #region Sanguine Hate set
+            IchorArmorMagic = false;
+            IchorArmorMelee = false;
+            IchorArmorRanged = false;
+            IchorArmorSummon = false;
+            IchorSummonSet = false;
+            #endregion
             #endregion
             #region normal accessories
             mirrorShield = false;
@@ -166,6 +182,13 @@ namespace Unending
                 player.lifeRegenTime = 0;
                 player.lifeRegen -= 15;
             }
+            if (player.HasBuff(BuffID.MoonLeech) && UnendingWorld.MayhemMode == true)
+            {
+                if (player.lifeRegen > 0)
+                    player.lifeRegen = 0;
+                player.lifeRegenTime = 0;
+                player.lifeRegen -= 25;
+            }
         }
 
         public override void PostUpdateMiscEffects()
@@ -202,10 +225,6 @@ namespace Unending
             if (MoonInject == true)
             {
                 player.buffImmune[BuffID.MoonLeech] = true;
-            }
-            if (overdriven)
-            {
-                player.statDefense -= player.statDefense;
             }
             if (mirrorShield == true)
             {
@@ -349,6 +368,23 @@ namespace Unending
                         }
                     }
                 });
+            }
+        }
+
+        public void IchorSummonEffect()
+        {
+            IchorSummonSet = true;
+
+            if (player.ownedProjectileCounts[mod.ProjectileType("IchorShield")] == 0)
+            {
+                const int max = 3;
+                float rotation = 2f * (float)Math.PI / max;
+
+                for (int i = 0; i < max; i++)
+                {
+                    Vector2 spawnPos = player.Center + new Vector2(60, 0f).RotatedBy(rotation * i);
+                    Projectile.NewProjectile(spawnPos, Vector2.Zero, mod.ProjectileType("IchorShield"), 30, 0f, player.whoAmI, 0, rotation * i);
+                }
             }
         }
     }

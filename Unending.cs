@@ -38,7 +38,7 @@ namespace Unending
 
 		public override void Load()
 		{
-			// Will show up in client.log under the ExampleMod name
+			// Will show up in client.log under the Unending Log name
 			/*
 			Logger.InfoFormat("{0} Unending Log", Name);
 			if (FontExists("Fonts/ExampleFont"))

@@ -5,6 +5,7 @@ using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Terraria.GameContent.Generation;
 
 namespace Unending
 {
@@ -23,6 +24,7 @@ namespace Unending
 
         public override TagCompound Save()
         {
+            # region Mayhem stuff
             List<string> mayhemVariables = new List<string>();
             if (MayhemMode) mayhemVariables.Add("mayhem");
 
@@ -30,12 +32,15 @@ namespace Unending
             {
                 {"mayhemVariables", mayhemVariables}
             };
+            #endregion
         }
 
         public override void Load(TagCompound tag)
         {
+            #region Mayhem Stuff
             IList<string> mayhemVariables = tag.GetList<string>("mayhemVariables");
             MayhemMode = mayhemVariables.Contains("mayhem");
+            #endregion
         }
     }
 }

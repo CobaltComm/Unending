@@ -91,6 +91,16 @@ namespace Unending.NPCs.GlobalNPCs
 						npc.buffImmune[BuffID.CursedInferno] = true;
 						npc.knockBackResist = 0f;
 						break;
+					case NPCID.LeechHead:
+						npc.lifeMax *= 3;
+						goto case NPCID.LeechTail;
+					case NPCID.LeechBody:
+					case NPCID.LeechTail:
+						npc.buffImmune[BuffID.Ichor] = true;
+						npc.buffImmune[BuffID.OnFire] = true;
+						npc.buffImmune[BuffID.Poisoned] = true;
+						npc.buffImmune[BuffID.CursedInferno] = true;
+						break;
 					#endregion
 
 					#region Lunatic Cultist boss fight
@@ -284,15 +294,15 @@ namespace Unending.NPCs.GlobalNPCs
 							}
 							break;
 
-						case NPCID.Corruptor:
-							if (Main.rand.Next(8) == 0)
+						case NPCID.EaterofSouls:
+							if (Main.rand.Next(8) == 0 && Main.hardMode)
 							{
 								npc.Transform(NPCID.IchorSticker);
 							}
 							break;
 
-						case NPCID.Herpling:
-							if (Main.rand.Next(8) == 0)
+						case NPCID.Crimera:
+							if (Main.rand.Next(8) == 0 && Main.hardMode)
 							{
 								npc.Transform(NPCID.SeekerHead);
 							}
@@ -372,6 +382,7 @@ namespace Unending.NPCs.GlobalNPCs
 
 						#endregion
 						#region Wall of Flesh!
+
 						#endregion
 				}
             }
